@@ -30,7 +30,7 @@ def non_consecutive_gaps(primes, k, save=True):
             'Gap / (log p)^2': ratio
         })
 
-        df.to_csv("Cramer.csv", index=False)
+        # df.to_csv("Cramer.csv", index=False)
     
     return pd.DataFrame({
         "Prime": p1,
