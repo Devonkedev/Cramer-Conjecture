@@ -478,7 +478,7 @@ plt.xscale("log"); plt.yscale("log")
 plt.xlabel("Prime p (log)"); plt.ylabel("Gap/(log p)^2 (log)")
 plt.title("2D Density: Ratio vs p")
 plt.colorbar(label='Count')
-plt.grid(True, which='both'); plt.tight_tailtight(); plt.show()
+plt.grid(True, which='both'); plt.tight_layout(); plt.show()
 
 import numpy as np
 x = df['Prime'].to_numpy()

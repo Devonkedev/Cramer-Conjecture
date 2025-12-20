@@ -12,7 +12,7 @@ try:
 except NameError:  # __file__ is undefined in interactive sessions
     BASE_DIR = Path.cwd()
 
-OUTPUT_DIR = BASE_DIR / "outputs"
+OUTPUT_DIR = BASE_DIR / "outputs1"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 PRIMES_CSV = BASE_DIR / "primes_precomputed.csv"
 USE_PRECOMPUTED_PRIMES = True
@@ -76,13 +76,14 @@ n = 100_000_000
 #     else:
 #         primes.append(x)
 
-from sympy import primerange, factorint
+from sympy import factorint
+from parse_primes import parse_all_primes
 
 precomputed_primes = load_primes_from_csv() if USE_PRECOMPUTED_PRIMES else None
 if precomputed_primes:
     primes = precomputed_primes
 else:
-    primes = list(primerange(2, n)) # n = 32452867
+    primes = parse_all_primes('primes_list', num_files=25)  # 25 million primes
 
 print(primes[0])
 print(primes[-1])
@@ -478,7 +479,7 @@ plt.xscale("log"); plt.yscale("log")
 plt.xlabel("Prime p (log)"); plt.ylabel("Gap/(log p)^2 (log)")
 plt.title("2D Density: Ratio vs p")
 plt.colorbar(label='Count')
-plt.grid(True, which='both'); plt.tight_tailtight(); plt.show()
+plt.grid(True, which='both'); plt.tight_layout(); plt.show()
 
 import numpy as np
 x = df['Prime'].to_numpy()
